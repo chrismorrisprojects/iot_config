@@ -1,0 +1,38 @@
+﻿<Window x:Class="iot_configuration_manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iot_configuration_manager"
+        xmlns:view="clr-namespace:iot_configuration_manager.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="532" Width="782">
+    <Grid>
+        <Button x:Name="LoadIpCsvButton" Command="{Binding OnClickLoadIpCsv}" Content="Load IP CSV" HorizontalAlignment="Left" Height="26" Margin="20,20,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="SetOutputCsvButton" Command="{Binding OnClickSetOutputCsv}"  Content="Set Output CSV" HorizontalAlignment="Left" Height="26" Margin="20,59,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="DeviceConfigurationLabel" Content="Device Configuration" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,109,0,0" Width="125"/>
+        <TextBox Text="{Binding InputCsvPath}" x:Name="InputCsvTexbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Margin="125,20,0,0"/>
+        <TextBox Text="{Binding OutputCsvPath}" x:Name="OutputCsvTexbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Margin="125,59,0,0"/>
+        <Separator HorizontalAlignment="Left" Height="5" Margin="10,135,0,0" VerticalAlignment="Top" Width="754"/>
+        <CheckBox IsChecked="{Binding IsRebootModemSelected}" x:Name="RebootModemCheckbox" Content="Reboot Modem if Online for more than" HorizontalAlignment="Left" Margin="393,22,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding RebootModemSeconds}" x:Name="RebootSecondsTextbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="625,20,0,0"/>
+        <Label x:Name="RebootSecondsLabel" Content="seconds" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="680,16,0,0" Width="65"/>
+        <TextBox Text="{Binding Username}" x:Name="UsernameTextbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Margin="410,59,0,0"/>
+        <TextBox Text="{Binding Password}" x:Name="PasswordTextbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Margin="594,59,0,0"/>
+        <Label x:Name="TimeoutLabel" Content="Time Out (seconds)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="410,100,0,0" Width="115"/>
+        <TextBox Text="{Binding TimeoutSeconds}"  x:Name="TimeoutSecondsTextbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="525,104,0,0"/>
+        <Label x:Name="AttemptsLabel" Content="Attempts" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="649,100,0,0" Width="60"/>
+        <TextBox Text="{Binding AttemptsLimit}" x:Name="AttemptsTextbox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="709,104,0,0"/>
+        <TabControl SelectedIndex="{Binding SelectedTabIndex}" x:Name="DeviceTabControl" HorizontalAlignment="Left" Height="346" Margin="10,145,0,0" VerticalAlignment="Top" Width="754">
+            <TabItem Header="rCell" Name="RCell">
+                <view:RCell DataContext="{Binding RCellVm}"></view:RCell>
+            </TabItem>
+            <TabItem Header="Sierra">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Calamp">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
